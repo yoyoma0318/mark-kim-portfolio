@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Kim | F&B Scale-Up Architect</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plotly.js -->
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+
+    <style>
+        /* Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        /* Hero Section - Deep Navy Theme from PDF */
+        .hero-section {
+            background-color: #0F172A; /* Dark Navy */
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.1) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(99, 102, 241, 0.1) 0px, transparent 50%);
+            min-height: 100vh; 
+            display: flex;
+            align-items: center;
+            padding-top: 4rem;
+            padding-bottom: 4rem;
+        }
+
+        /* Glass Card for Profile */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 40px -5px rgba(0, 0, 0, 0.4);
+            border-radius: 1.5rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #60A5FA, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Profile Image */
+        .profile-img-container {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.2);
+            flex-shrink: 0;
+            background-color: #1e293b;
+        }
+        
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+        }
+
+        /* Skill Pills */
+        .skill-pill {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.4rem 0.8rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #E2E8F0;
+        }
+        .skill-pill i { color: #818CF8; margin-right: 0.4rem; }
+
+        /* Chart Box */
+        .chart-box {
+            background: white;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            border: 1px solid #E2E8F0;
+            height: 350px;
+            position: relative;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Hero Section -->
+    <header class="hero-section text-white">
+        <div class="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-20 items-center">
+                
+                <!-- Left: Value Prop -->
+                <div class="lg:col-span-7 space-y-8">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-indigo-500/30 bg-indigo-900/30 text-indigo-300 text-xs font-bold tracking-widest uppercase">
+                        Strategic F&B Advisory
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                        Scale Your Brand <br>
+                        <span class="text-gradient">With Certainty.</span>
+                    </h1>
+                    
+                    <p class="text-lg text-slate-300 font-light max-w-xl leading-relaxed">
+                        Don't guess. Validate. Gastro-Stamp bridges the gap between <strong>Global Ambition</strong> and <strong>Local Profitability</strong> using data-driven feasibility analysis.
+                    </p>
+
+                    <!-- Core Competencies from PDF -->
+                    <div class="flex flex-wrap gap-2 pt-2">
+                        <span class="skill-pill"><i class="fas fa-chart-pie"></i> Unit Economics</span>
+                        <span class="skill-pill"><i class="fas fa-truck"></i> SCM Feasibility</span>
+                        <span class="skill-pill"><i class="fas fa-handshake"></i> MF Deal Structuring</span>
+                    </div>
+                    
+                    <div class="pt-8 flex gap-4">
+                         <a href="mailto:mark.kim@mtableinnovation.com" class="inline-flex items-center px-8 py-3 border border-transparent text-base font-bold rounded-full shadow-lg text-white bg-indigo-600 hover:bg-indigo-700 transition-all hover:-translate-y-1">
+                            Contact Me
+                        </a>
+                        <a href="https://www.linkedin.com/in/mark-kim-mtableinnovation/" target="_blank" class="inline-flex items-center px-8 py-3 border border-slate-600 text-base font-medium rounded-full text-slate-300 hover:bg-slate-800 hover:text-white transition-all">
+                            <i class="fab fa-linkedin mr-2"></i> LinkedIn
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right: Expert Profile Card -->
+                <div class="lg:col-span-5 w-full">
+                    <div class="glass-card p-8 relative">
+                        <!-- Profile Header -->
+                        <div class="flex items-center gap-5 mb-8">
+                            <div class="profile-img-container">
+                                <!-- User Image -->
+                                <img src="image_955255.jpg" 
+                                     alt="Mark Kim" 
+                                     class="profile-img"
+                                     onerror="this.src='https://ui-avatars.com/api/?name=Mark+Kim&background=4F46E5&color=fff&size=128&font-size=0.4'"> 
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-bold text-white tracking-tight">Mark Kim</h2>
+                                <p class="text-indigo-300 text-sm font-semibold">Global F&B Turnaround Expert</p>
+                            </div>
+                            <div class="ml-auto text-amber-400 text-2xl"><i class="fas fa-certificate"></i></div>
+                        </div>
+
+                        <!-- Stats -->
+                        <div class="space-y-5 border-t border-white/10 pt-6">
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Experience</span>
+                                <span class="text-white font-bold">18+ Years</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Key Role</span>
+                                <span class="text-white font-bold">Ex-CEO, Bonchon VN</span>
+                            </div>
+                            <div class="flex justify-between text-sm">
+                                <span class="text-slate-400">Specialty</span>
+                                <span class="text-white font-bold">CFO-Level P&L Mgmt</span>
+                            </div>
+                        </div>
+
+                        <!-- Trusted By -->
+                        <div class="mt-8 pt-6 border-t border-white/10">
+                            <div class="text-[10px] text-slate-500 uppercase tracking-widest mb-3 font-bold">Trusted By</div>
+                            <div class="flex gap-4 text-white font-bold opacity-90 text-sm">
+                                <span>CJ Foodville</span><span>|</span>
+                                <span>Bonchon</span><span>|</span>
+                                <span>Gopizza</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="bg-white py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-24">
+
+            <!-- 1. Market Insight -->
+            <section>
+                <div class="text-center mb-12">
+                    <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs">Market Insight</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2">Southeast Asia: The New Engine</h2>
+                    <p class="text-slate-500 mt-4 max-w-2xl mx-auto leading-relaxed">
+                         The "Copy-Paste" strategy fails in Asia. Success requires navigating the <strong>Execution Gap</strong>.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div class="chart-box border-none shadow-none">
+                        <canvas id="marketChart"></canvas>
+                    </div>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-slate-50 rounded-xl border-l-4 border-indigo-500">
+                            <h4 class="font-bold text-slate-900 text-lg mb-1">Massive Scale (TAM)</h4>
+                            <p class="text-sm text-slate-600">Global Franchise Market hitting <strong>$1.9T</strong>. SE Asia is the fastest growing segment.</p>
+                        </div>
+                        <div class="p-6 bg-slate-50 rounded-xl border-l-4 border-rose-500">
+                            <h4 class="font-bold text-slate-900 text-lg mb-1">High Failure Rate</h4>
+                            <p class="text-sm text-slate-600">Due to lack of Unit Economics & Halal Supply Chain validation.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Why Mark Kim? (Radar) -->
+            <section>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div>
+                        <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs">Why Mark Kim?</span>
+                        <h2 class="text-3xl font-bold text-slate-900 mt-2 mb-6">Bridging Corporate & Startup</h2>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h4 class="font-bold text-slate-900"><i class="fas fa-building text-indigo-500 mr-2"></i> Corporate Discipline</h4>
+                                <p class="text-sm text-slate-600 mt-1 ml-6">Ex-CFO of CJ Foodville Indonesia. Managing SCM, Finance, and Global Strategy.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900"><i class="fas fa-rocket text-indigo-500 mr-2"></i> Startup Agility</h4>
+                                <p class="text-sm text-slate-600 mt-1 ml-6">Founder of M Table Innovation & VP at Gopizza. Zero-to-one build & fast pivot.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-slate-900"><i class="fas fa-microchip text-indigo-500 mr-2"></i> Tech Integration</h4>
+                                <p class="text-sm text-slate-600 mt-1 ml-6">Integrating AI and Digital Tools to standardize operations.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chart-box h-96">
+                        <canvas id="radarChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3. Proven Track Record -->
+            <section class="bg-slate-900 text-white rounded-3xl p-8 lg:p-16 relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-96 h-96 bg-indigo-600 rounded-full blur-[100px] opacity-20"></div>
+                
+                <div class="text-center mb-12 relative z-10">
+                    <h2 class="text-3xl font-bold">Proven Track Record</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 relative z-10">
+                    <!-- Bonchon -->
+                    <div class="bg-white text-slate-900 p-6 rounded-2xl shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold">Bonchon Vietnam</h3>
+                            <span class="px-2 py-1 bg-rose-100 text-rose-600 text-xs font-bold rounded">2.5x Growth</span>
+                        </div>
+                        <div style="height: 250px;">
+                            <canvas id="growthChart"></canvas>
+                        </div>
+                    </div>
+                    <!-- CJ -->
+                    <div class="bg-white text-slate-900 p-6 rounded-2xl shadow-lg">
+                        <div class="flex justify-between items-center mb-4">
+                            <h3 class="font-bold">CJ Indonesia</h3>
+                            <span class="px-2 py-1 bg-emerald-100 text-emerald-600 text-xs font-bold rounded">$1M Saved</span>
+                        </div>
+                        <div id="waterfallChart" style="height: 250px;"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Methodology -->
+            <section>
+                <div class="text-center mb-12">
+                    <span class="text-indigo-600 font-bold tracking-widest uppercase text-xs">How We Work</span>
+                    <h2 class="text-3xl font-bold text-slate-900 mt-2">The Gastro-Stamp Methodology</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Cards -->
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg text-center hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 bg-sky-100 text-sky-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-search"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">1. Verify</h3>
+                        <p class="text-sm text-slate-500">Data-driven validation of Unit Economics & Halal feasibility.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg text-center hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 bg-indigo-100 text-indigo-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-handshake"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">2. Match</h3>
+                        <p class="text-sm text-slate-500">Connecting vetted brands with qualified Investors & MFs.</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-2xl border border-slate-200 shadow-lg text-center hover:-translate-y-1 transition-transform">
+                        <div class="w-14 h-14 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 text-xl"><i class="fas fa-cogs"></i></div>
+                        <h3 class="font-bold text-slate-900 mb-2">3. Execute</h3>
+                        <p class="text-sm text-slate-500">Full NSO Setup, SOP Assetization, and Turnaround.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 py-12 border-t border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <h3 class="text-slate-900 font-bold text-xl mb-6">Ready to expand?</h3>
+            <div class="flex justify-center gap-6 mb-8">
+                 <a href="mailto:mark.kim@mtableinnovation.com" class="text-slate-500 hover:text-indigo-600 transition-colors">
+                    <i class="fas fa-envelope text-2xl"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/mark-kim-mtableinnovation/" target="_blank" class="text-slate-500 hover:text-indigo-600 transition-colors">
+                    <i class="fab fa-linkedin text-2xl"></i>
+                </a>
+            </div>
+            <p class="text-xs text-slate-400">© 2024 Mark Kim. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Chart Logic -->
+    <script>
+        Chart.defaults.font.family = 'Inter';
+        Chart.defaults.color = '#64748B';
+        const commonOptions = { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } };
+
+        // 1. Market Size (Bar) - Updated Data from PDF
+        new Chart(document.getElementById('marketChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Global TAM', 'Asia SAM', 'Target SOM'],
+                datasets: [{
+                    data: [1967, 590, 136],
+                    backgroundColor: ['#E2E8F0', '#818CF8', '#4F46E5'],
+                    borderRadius: 6, barPercentage: 0.5
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { beginAtZero: true, grid: { display: true, borderDash: [2, 2] } }, x: { grid: { display: false } } } }
+        });
+
+        // 2. Radar - Why Mark Kim
+        new Chart(document.getElementById('radarChart'), {
+            type: 'radar',
+            data: {
+                labels: ['Value Chain', 'Tech/Data', 'Risk Mgmt', 'Network', 'Speed'],
+                datasets: [{
+                    label: 'Mark Kim',
+                    data: [95, 90, 95, 85, 90],
+                    backgroundColor: 'rgba(79, 70, 229, 0.2)',
+                    borderColor: '#4F46E5',
+                    pointBackgroundColor: '#4F46E5'
+                }, {
+                    label: 'Avg Consultant',
+                    data: [60, 40, 70, 60, 50],
+                    backgroundColor: 'rgba(203, 213, 225, 0.2)',
+                    borderColor: '#CBD5E1',
+                    pointBackgroundColor: '#CBD5E1'
+                }]
+            },
+            options: { ...commonOptions, scales: { r: { angleLines: { color: '#F1F5F9' }, grid: { color: '#F1F5F9' }, pointLabels: { font: { size: 12, weight: '600' } } } } }
+        });
+
+        // 3. Growth (Line)
+        new Chart(document.getElementById('growthChart'), {
+            type: 'line',
+            data: {
+                labels: ['Launch', 'Optimize', 'Scale', 'Mass Mkt'],
+                datasets: [{
+                    data: [100, 140, 180, 250],
+                    borderColor: '#F43F5E',
+                    backgroundColor: (ctx) => {
+                        const grad = ctx.chart.ctx.createLinearGradient(0,0,0,250);
+                        grad.addColorStop(0, 'rgba(244, 63, 94, 0.2)');
+                        grad.addColorStop(1, 'rgba(244, 63, 94, 0)');
+                        return grad;
+                    },
+                    fill: true, tension: 0.4, borderWidth: 3
+                }]
+            },
+            options: { ...commonOptions, scales: { y: { grid: { display: true, borderDash: [2, 2] } }, x: { grid: { display: false } } } }
+        });
+
+        // 4. Waterfall (Plotly)
+        Plotly.newPlot('waterfallChart', [{
+            type: "waterfall", orientation: "v",
+            measure: ["relative", "relative", "relative", "total"],
+            x: ["Deficit", "COGS", "Logistics", "EBITDA"],
+            text: ["Start", "+$600k", "+$400k", "Profit"],
+            y: [-500, 600, 400, 500],
+            connector: { line: { color: "#CBD5E1" } },
+            decreasing: { marker: { color: "#F43F5E" } },
+            increasing: { marker: { color: "#10B981" } },
+            totals: { marker: { color: "#4F46E5" } }
+        }], {
+            margin: { t: 10, l: 30, r: 10, b: 30 },
+            showlegend: false,
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            yaxis: { showgrid: true, gridcolor: '#F1F5F9' },
+            xaxis: { tickfont: { family: 'Inter' } }
+        }, { displayModeBar: false });
+    </script>
+</body>
+</html>
